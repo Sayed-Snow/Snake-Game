@@ -26,13 +26,20 @@ class Snake:
         size_increase.goto(self.snake[-1].pos())
         self.snake.append(size_increase)
 
-    # Moving using the goto funtion
+    # Moving using the goto function
     def move(self):
         for x in range(len(self.snake) - 1, -1, -1):
             if x == 0:
                 self.snake[x].forward(20)
             else:
                 self.snake[x].goto(self.snake[x - 1].position())
+
+    def reset(self):
+        for body in self.snake:
+            body.goto(1000, 1000)
+        self.snake.clear()
+        self.build()
+        self.head = self.snake[0]
 
     # Movements
     def turn_left(self):
