@@ -1,4 +1,4 @@
-from turtle import Turtle, Screen
+from turtle import Screen
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
@@ -32,12 +32,12 @@ while game_on:
         snake.increase()
     # Checking if it's hitting a wall
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        scoreboard.game_over()
-        game_on = False
+        scoreboard.reset()
+        snake.reset()
     # Checking if it's hitting its tail
     for x in snake.snake[1:]:
         if snake.head.distance(x) < 15:
-            scoreboard.game_over()
-            game_on = False
+            scoreboard.reset()
+            snake.reset()
 
 screen.exitonclick()
